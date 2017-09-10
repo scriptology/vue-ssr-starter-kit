@@ -1,11 +1,13 @@
-<template>
-  <div class="foo">
-    <p>this.id: {{id}}</p>
-    <p>this.$store.state.count: {{$store.state.count}}</p>
-    <p>Enviroment Variables Defined by webpack.DefinePlugin:</p>
-    <pre>{{config}}</pre>
-    <p><router-link to="/">goto /</router-link></p>
-  </div>
+<template lang="pug">
+  .foo
+    p this is pug template
+    p this.id: {{id}}
+    p this.$store.state.count: {{$store.state.count}}
+    p Enviroment Variables Defined by webpack.DefinePlugin:
+    pre.
+      \n{{config}}
+    p
+      router-link(to='/') goto /
 </template>
 
 <style scoped>
