@@ -1,0 +1,99 @@
+{
+  "name": "vue-ssr-boilerplate",
+  "version": "0.1.0",
+  "description": "Vue.js Server Side Rendering Boilerplate without Polluting Vuex",
+  "main": "server.js",
+  "scripts": {
+    "local": "npm run dev --config=local",
+    "dev": "run-p dev:client dev:server dev:mon",
+    "dev:brk": "run-p dev:client dev:server dev:mon:brk",
+    "dev:client": "webpack-dev-server -d --hot --config webpack.config.client.js --env.dev --env.config dev",
+    "dev:server": "webpack -w --config webpack.config.server.js --env.dev --env.config dev",
+    "dev:mon": "node -e \"setTimeout(()=>{}, 8000)\" && nodemon --inspect --ignore src/ server.js -- --dev --config dev",
+    "dev:mon:brk": "node -e \"setTimeout(()=>{}, 8000)\" && nodemon --inspect --debug-brk --ignore src/ server.js -- --dev --config dev",
+    "build": "rimraf dist && webpack --config webpack.config.server.js && webpack -p --config webpack.config.client.js",
+    "start": "node server.js"
+  },
+  "author": "Jiang Fengming",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "6.7.7",
+    "babel-core": "6.24.0",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.4.1",
+    "babel-preset-latest": "6.24.0",
+    "babel-preset-stage-2": "6.22.0",
+    "css-loader": "0.27.3",
+    "eslint": "3.18.0",
+    "eslint-config-enough": "0.2.5",
+    "eslint-loader": "1.6.3",
+    "eslint-plugin-html": "2.0.1",
+    "extract-text-webpack-plugin": "2.1.0",
+    "file-loader": "0.10.1",
+    "html-loader": "0.4.5",
+    "html-webpack-plugin": "2.28.0",
+    "nodemon": "1.11.0",
+    "npm-run-all": "4.0.2",
+    "postcss-loader": "1.3.3",
+    "rimraf": "2.6.1",
+    "url-loader": "0.5.8",
+    "vue-loader": "11.1.4",
+    "vue-template-compiler": "2.2.4",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.4.2",
+    "write-file-webpack-plugin": "4.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "latest",
+        {
+          "es2015": {
+            "loose": true,
+            "modules": false
+          }
+        }
+      ],
+      "stage-2"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "enough",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "plugins": [
+      "html"
+    ],
+    "globals": {
+      "DEBUG": false,
+      "TARGET": false,
+      "VERSION": false,
+      "CONFIG": false
+    }
+  },
+  "dependencies": {
+    "express": "4.15.2",
+    "vue": "2.2.4",
+    "vue-meta": "0.5.5",
+    "vue-router": "2.3.0",
+    "vue-server-renderer": "2.2.4",
+    "vuex": "2.2.1",
+    "yargs": "7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenivana/vue-ssr-boilerplate.git"
+  },
+  "keywords": [
+    "vue",
+    "server side rendering",
+    "ssr"
+  ],
+  "bugs": {
+    "url": "https://github.com/fenivana/vue-ssr-boilerplate/issues"
+  },
+  "homepage": "https://github.com/fenivana/vue-ssr-boilerplate#readme"
+}

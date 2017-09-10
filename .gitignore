@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log*
+debug.log
+.DS_Store
+.idea
+.vscode
+config/*
+!config/default.js
+!config/dev.js
+/tmp
+/dist
