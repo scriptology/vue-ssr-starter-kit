@@ -1,27 +1,36 @@
 <template lang="pug">
   .foo
-    p this is pug template
+    .test this is pug template
     p this.id: {{id}}
     p this.$store.state.count: {{$store.state.count}}
+    p this.$store.state: {{$store.state}}
     p Enviroment Variables Defined by webpack.DefinePlugin:
     pre.
       \n{{config}}
     p
       router-link(to='/') goto /
+
+    .post(v-for='post of $store.state.items')
+      h3.post__title {{ post.title }}
+      p.post__body {{ post.body }}
 </template>
 
-<style scoped>
-.foo {
-  color: blue
-}
+<style lang="sass">
+  .post
+    &__title
+      color: green
+    &__body
+      color: #333
 </style>
 
 <script>
+
 import config from '~/config'
 
 export default {
-  data() {
+  data () {
     return {
+      items: [],
       title: '',
       description: '',
       id: 0,
@@ -29,7 +38,7 @@ export default {
     }
   },
 
-  metaInfo() {
+  metaInfo () {
     return {
       title: this.title,
       meta: [
@@ -38,7 +47,29 @@ export default {
     }
   },
 
-  prefetch(route, store) {
+  // created() {
+  //   HTTP.get('posts')
+  //   .then(response => {
+  //     this.posts = response.data
+  //   })
+  //   .catch(e => {
+  //     this.errors.push(e)
+  //   })
+  // },
+
+  // asyncData({ store }) {
+  //   // возвращаем Promise из действия
+  //   return store.dispatch('fetchItem')
+  // },
+  //
+  // computed: {
+  //   // отображаем элемент из состояния хранилища.
+  //   items() {
+  //     return this.$store.state.items
+  //   }
+  // },
+
+  prefetch (route, store) {
     return Promise.all([
       new Promise(resolve => {
         setTimeout(() => {
@@ -49,13 +80,13 @@ export default {
           })
         })
       }),
-
+      store.dispatch('fetchItem'),
       store.dispatch('asyncIncrement')
     ]).then(([componentData]) => componentData)
   },
 
   // won't run on server side
-  beforeMount() {
+  beforeMount () {
     console.log(this.a) //eslint-disable-line
 
     /*

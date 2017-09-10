@@ -24,7 +24,18 @@ module.exports = (options = {}) => {
       rules: [
         {
           test: /\.vue$/,
-          use: 'vue-loader'
+          use: [
+            {
+              loader: 'vue-loader',
+              options: {
+                postcss: [require('autoprefixer')()],
+                loaders: {
+                  'scss': 'vue-style-loader!css-loader!sass-loader',
+                  'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                }
+              }
+            }
+          ]
         },
 
         {
@@ -32,6 +43,12 @@ module.exports = (options = {}) => {
           exclude: /node_modules/,
           use: 'babel-loader'
         },
+
+        // {
+        //   test: /\.s[a|c]ss$/,
+        //   exclude: /node_modules/,
+        //   use: ['css-loader', 'sass-loader']
+        // },
 
         {
           test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,

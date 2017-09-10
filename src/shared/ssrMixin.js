@@ -1,11 +1,13 @@
 export default {
-  created() {
+  created () {
     if (TARGET === 'web') {
       if (window.__INITIAL_COMPONENTS_STATE__ & this.$router) {
         const matched = this.$router.getMatchedComponents()
         if (!matched.length) return
 
-        matched.forEach((component, i) => component.__INITIAL_STATE__ = window.__INITIAL_COMPONENTS_STATE__[i])
+        matched.forEach((component, i) => {
+          component.__INITIAL_STATE__ = window.__INITIAL_COMPONENTS_STATE__[i]
+        })
         window.__INITIAL_COMPONENTS_STATE__ = null
       }
     }
