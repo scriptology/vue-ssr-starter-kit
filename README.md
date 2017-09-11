@@ -8,17 +8,16 @@ Vue.js Server Side Rendering Boilerplate without Polluting Vuex
 
 
 ## Features:
-* Doesn't dependent on Vuex. Putting every thing into Vuex is so ugly.
-* Vuex is there, global states can still put into Vuex store.
 * Customizable webpack config.
 * Hot module replacement.
 * Codes can run with or without SSR.
 * Lazy loading routes.
-* And so on.
+* Support PUG/JADE templates
+* Support SASS/SCSS
 
 
 ## Environments
-* Node.js >= 7 (maybe node 6 will work, haven't tested)
+* Node.js >= 6.10
 
 
 ## Initialize
@@ -337,21 +336,3 @@ We also defined some environment variables using webpack.DefinePlugin:
 * `VERSION`: `version` in `package.json`.
 * `TARGET`: `node` on server-side, `web` on client-side.
 * `CONFIG`: `runtimeConfig` in config file.
-
-
-## Why XXX loaders are not configured?
-No dish suits all tastes. Just fork it and add your sass/stylus/typescript/... loaders. Or change to your favorite eslint or babel presets.
-
-
-## Why not use renderToStream?
-vue-meta has some problems with `renderToStream`. If the first chunk is too big, vue-meta can't get correct meta info of child components ( [vue-meta#44](https://github.com/declandewet/vue-meta/issues/44) ). We switched back to `renderToString` until this issue be fixed.
-
-
-## Contributing
-If you find bugs, please submit issues on github. Pull requests are welcome!
-
-
-## License
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2016 Jiang Fengming
