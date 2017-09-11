@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     count: 0,
     items: [],
+    tags: [],
     item: {}
   },
 
@@ -18,20 +19,28 @@ export default new Vuex.Store({
     setItems (state, { data }) {
       state.items = data
     },
+    setTags (state, { data }) {
+      state.tags = data
+    },
     setItem (state, { data }) {
       // Vue.set(state.items, data.id, data)
-      console.log(data)
       state.item = data
+      state.title = data.name
+      state.description = data.description
     }
   },
 
   actions: {
     fetchItems ({ commit }) {
-      // возвращаем Promise через `store.dispatch()`
-      // чтобы мы могли понять когда данные будут загружены
       return HTTP.get('article?page=1&limit=30')
         .then(response => {
           commit('setItems', response)
+        })
+    },
+    fetchTags ({ commit }) {
+      return HTTP.get('tag?page=1&limit=10&is_root=1')
+        .then(response => {
+          commit('setTags', response)
         })
     },
     fetchItem ({ commit }, code) {
