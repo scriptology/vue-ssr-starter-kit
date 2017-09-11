@@ -17,7 +17,8 @@ module.exports = {
   rules: {
     'eslint-plugin/report-message-format': ['error', '^[A-Z].*\\.$'],
     'eslint-plugin/prefer-placeholders': 'error',
-    'eslint-plugin/consistent-output': 'error'
+    'eslint-plugin/consistent-output': 'error',
+    'spaced-comment': 0
   },
   globals: {
       "CONFIG": true,

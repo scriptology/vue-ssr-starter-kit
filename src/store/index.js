@@ -14,22 +14,27 @@ export default new Vuex.Store({
     increment (state) {
       state.count++
     },
-    setItem (state, items) {
-      console.log(items)
-      state.items = items
+    setItems (state, { data }) {
+      state.items = data
+    },
+    setItem (state, { data }) {
+      Vue.set(state.items, data.id, data)
     }
   },
 
   actions: {
-    fetchItem ({ commit }) {
+    fetchItems ({ commit }) {
       // возвращаем Promise через `store.dispatch()`
       // чтобы мы могли понять когда данные будут загружены
-      // return fetchItem().then(data => {
-      //   commit('setItem', data.items)
-      // })
       return HTTP.get('posts')
         .then(response => {
-          commit('setItem', response.items)
+          commit('setItems', response)
+        })
+    },
+    fetchItem ({ commit }, id) {
+      return HTTP.get('posts/' + id)
+        .then(response => {
+          commit('setItem', response)
         })
     },
     asyncIncrement ({ commit }) {

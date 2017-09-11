@@ -1,16 +1,8 @@
 <template lang="pug">
-  .foo
-    .test this is pug template
-    p this.id: {{id}}
-    p this.$store.state.count: {{$store.state.count}}
-    p Enviroment Variables Defined by webpack.DefinePlugin:
-    pre.
-      \n{{config}}
-    p
-      router-link(to='/') goto /
-
+  .list
+    .test posts
     .post(v-for='post of $store.state.items')
-      h3.post__title {{ post.title }}
+      router-link(:to="{ name: 'post', params: { id: post.id } }") {{ post.title }}
       p.post__body {{ post.body }}
 </template>
 
@@ -52,20 +44,17 @@ export default {
         setTimeout(() => {
           resolve({
             title: 'title async loaded',
-            description: 'description async loaded',
-            id: route.params.id
+            description: 'description async loaded'
           })
         })
       }),
-      store.dispatch('fetchItem'),
+      store.dispatch('fetchItems'),
       store.dispatch('asyncIncrement')
     ]).then(([componentData]) => componentData)
   },
 
   // won't run on server side
   beforeMount () {
-    console.log(this.a) //eslint-disable-line
-
     /*
     can not be defined in data(),
     because the TARGET is different between server side (TARGET: node) and client side (TARGET: web)
