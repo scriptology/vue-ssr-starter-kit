@@ -1,29 +1,57 @@
 <template lang="pug">
-  .list
-    h2.test Article
+  div
+    h1 vue-ssr-boilerplate
+    hr
     div
-      h1.post__title {{ $store.state.item.name }}
-      div.post__body {{ $store.state.item.preview_text }}
+      strong.list__name Article:
+      h2 {{ $store.state.item.name }}
+      p {{ $store.state.item.preview_text }}
     hr
-    h2.test Articles
-    .post(v-for='post of $store.state.items')
-      router-link(:to="{ name: 'post', params: { code: post.code } }") {{ post.name }}
-      p.post__body {{ post.preview_text }}
+    .tags
+      strong.tags__name Tags:
+      .tags__item(v-for='tag of $store.state.tags')
+        span {{tag.name}}
     hr
-    h2.test Tags
-    ul
-      li.post(v-for='tag of $store.state.tags')
-        p {{ tag.name }}
+    .list
+      strong.list__name List:
+      .list__item(v-for='post of $store.state.items')
+        h3 {{ post.name }}
+        p {{ post.preview_text }}
 </template>
 
 <style lang="sass">
-  .test
-    color: #4a89dc
-  .post
-    &__title
-      color: #4a6edc
-    &__body
-      color: #333
+  body
+    font-family: 'Open Sans', sans-serif
+    font-size: 14px
+    line-height: 1.42857143
+  h1
+    font-size: 2em
+    color: #5288d0
+  .list
+    background: #efeee9
+    padding: 5px
+    &__name
+      color: #5288d0
+      display: block
+      margin-bottom: 5px
+    &__item
+      background: #fff
+      padding: 10px
+      margin-bottom: 5px
+
+  .tags
+    &__name
+      color: #5288d0
+      display: block
+      margin-bottom: 5px
+    &__item
+      display: inline-block
+      padding: 0 10px
+      background: #000
+      color: #fff
+      line-height: 30px
+      vertical-align: top
+      margin-right: 5px
 </style>
 
 <script>

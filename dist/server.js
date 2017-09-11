@@ -723,6 +723,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -913,7 +941,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.test {\n  color: #4a89dc;\n}\n.post__title {\n  color: #4a6edc;\n}\n.post__body {\n  color: #333;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 14px;\n  line-height: 1.42857143;\n}\nh1 {\n  font-size: 2em;\n  color: #5288d0;\n}\n.list {\n  background: #efeee9;\n  padding: 5px;\n}\n.list__name {\n    color: #5288d0;\n    display: block;\n    margin-bottom: 5px;\n}\n.list__item {\n    background: #fff;\n    padding: 10px;\n    margin-bottom: 5px;\n}\n.tags__name {\n  color: #5288d0;\n  display: block;\n  margin-bottom: 5px;\n}\n.tags__item {\n  display: inline-block;\n  padding: 0 10px;\n  background: #000;\n  color: #fff;\n  line-height: 30px;\n  vertical-align: top;\n  margin-right: 5px;\n}\n", ""]);
 
 // exports
 
@@ -1103,38 +1131,25 @@ module.exports.render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "list"
-  }, [_c('h2', {
-    staticClass: "test"
-  }, [_vm._v("Article")]), _c('div', [_c('h1', {
-    staticClass: "post__title"
-  }, [_vm._v(_vm._s(_vm.$store.state.item.name))]), _c('div', {
-    staticClass: "post__body"
-  }, [_vm._v(_vm._s(_vm.$store.state.item.preview_text))])]), _c('hr'), _c('h2', {
-    staticClass: "test"
-  }, [_vm._v("Articles")]), _vm._l((_vm.$store.state.items), function(post) {
+  return _c('div', [_c('h1', [_vm._v("vue-ssr-boilerplate")]), _c('hr'), _c('div', [_c('strong', {
+    staticClass: "list__name"
+  }, [_vm._v("Article:")]), _c('h2', [_vm._v(_vm._s(_vm.$store.state.item.name))]), _c('p', [_vm._v(_vm._s(_vm.$store.state.item.preview_text))])]), _c('hr'), _c('div', {
+    staticClass: "tags"
+  }, [_c('strong', {
+    staticClass: "tags__name"
+  }, [_vm._v("Tags:")]), _vm._l((_vm.$store.state.tags), function(tag) {
     return _c('div', {
-      staticClass: "post"
-    }, [_c('router-link', {
-      attrs: {
-        "to": {
-          name: 'post',
-          params: {
-            code: post.code
-          }
-        }
-      }
-    }, [_vm._v(_vm._s(post.name))]), _c('p', {
-      staticClass: "post__body"
-    }, [_vm._v(_vm._s(post.preview_text))])], 1)
-  }), _c('hr'), _c('h2', {
-    staticClass: "test"
-  }, [_vm._v("Tags")]), _c('ul', _vm._l((_vm.$store.state.tags), function(tag) {
-    return _c('li', {
-      staticClass: "post"
-    }, [_c('p', [_vm._v(_vm._s(tag.name))])])
-  }))], 2)
+      staticClass: "tags__item"
+    }, [_c('span', [_vm._v(_vm._s(tag.name))])])
+  })], 2), _c('hr'), _c('div', {
+    staticClass: "list"
+  }, [_c('strong', {
+    staticClass: "list__name"
+  }, [_vm._v("List:")]), _vm._l((_vm.$store.state.items), function(post) {
+    return _c('div', {
+      staticClass: "list__item"
+    }, [_c('h3', [_vm._v(_vm._s(post.name))]), _c('p', [_vm._v(_vm._s(post.preview_text))])])
+  })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
