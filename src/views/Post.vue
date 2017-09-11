@@ -1,17 +1,9 @@
 <template lang="pug">
-  .foo
-    .test this is pug template
-    p this.id: {{id}}
-    p this.$store.state.count: {{$store.state.count}}
-    p Enviroment Variables Defined by webpack.DefinePlugin:
-    pre.
-      \n{{config}}
-    p
-      router-link(to='/') goto /
-
-    .post(v-for='post of $store.state.items')
-      h3.post__title {{ post.title }}
-      p.post__body {{ post.body }}
+  .post
+    .test post
+    div(v-if="item")
+      h1.post__title {{ item.title }}
+      div.post__body {{ item.body }}
 </template>
 
 <style lang="sass">
@@ -19,7 +11,7 @@
     &__title
       color: green
     &__body
-      color: #333
+      color: #ccc
 </style>
 
 <script>
@@ -29,11 +21,24 @@ import config from '~/config'
 export default {
   data () {
     return {
-      items: [],
       title: '',
       description: '',
       id: 0,
       config: null
+    }
+  },
+
+  asyncData ({ store, route }) {
+    // возвращаем Promise из действия
+    if (route.params.id) {
+      return store.dispatch('fetchItem', route.params.id)
+    }
+  },
+
+  computed: {
+    // отображаем элемент из состояния хранилища.
+    item () {
+      return this.$store.state.items[this.$route.params.id]
     }
   },
 
@@ -57,15 +62,13 @@ export default {
           })
         })
       }),
-      store.dispatch('fetchItem'),
+      store.dispatch('fetchItem', route.params.id),
       store.dispatch('asyncIncrement')
     ]).then(([componentData]) => componentData)
   },
 
   // won't run on server side
   beforeMount () {
-    console.log(this.a) //eslint-disable-line
-
     /*
     can not be defined in data(),
     because the TARGET is different between server side (TARGET: node) and client side (TARGET: web)

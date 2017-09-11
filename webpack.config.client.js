@@ -8,7 +8,7 @@ const url = require('url')
 
 module.exports = (options = {}) => {
   const config = require('./config/' + (process.env.npm_config_config || options.config || 'default'))
-
+  
   return {
     entry: {
       vendor: './src/vendor',
@@ -32,10 +32,8 @@ module.exports = (options = {}) => {
               options: {
                 postcss: [require('autoprefixer')()],
                 loaders: {
-                  css: ExtractTextPlugin.extract({
-                    use: 'css-loader',
-                    fallback: 'vue-style-loader'
-                  })
+                  'scss': 'vue-style-loader!css-loader!sass-loader',
+                  'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
                 }
               }
             },
@@ -107,11 +105,11 @@ module.exports = (options = {}) => {
 
       new WriteFilePlugin(),
 
-      new ExtractTextPlugin({
-        filename: '[name].css?[contenthash]',
-        allChunks: true,
-        disable: options.dev
-      })
+      // new ExtractTextPlugin({
+      //   filename: '[name].css?[contenthash]',
+      //   allChunks: true,
+      //   disable: options.dev
+      // })
     ],
 
     resolve: {

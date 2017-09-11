@@ -5,12 +5,13 @@
     <p><router-link :to="{ name: 'foo', params: { id: 123 } }">goto /foo/123</router-link></p>
     <p><router-link to="/page-not-exist">goto /page-not-exist</router-link></p>
     <p><router-link to="/show-error-page">goto /show-error-page</router-link></p>
+    <p><router-link to="/posts">posts</router-link></p>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       a: 0
     }
@@ -23,19 +24,19 @@ export default {
     ]
   },
 
-  prefetch() {
+  prefetch () {
     return Promise.resolve({
       a: 123
     })
   },
 
   // will be called on server side. check your console
-  created() {
+  created () {
     console.log(this.a) //eslint-disable-line
   },
 
   // won't run on server side
-  beforeMount() {
+  beforeMount () {
     console.log(this.a) //eslint-disable-line
   }
 }

@@ -10,7 +10,7 @@ export default context => {
 
   // no matched routes
   if (!matchedComponents.length) return Promise.reject({ code: '404' })
-
+  
   // Call prefetch hooks on components matched by the route.
   return Promise.all(matchedComponents.map(component => {
     if (component.prefetch) {

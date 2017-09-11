@@ -6,17 +6,17 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       foo: 0
     }
   },
 
-  prefetch() {
+  prefetch () {
     return Promise.reject()
   },
 
-  beforeMount() {
+  beforeMount () {
     this.prefetched.catch(() => {
       alert('500 Internal Server Error')
     })
