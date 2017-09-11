@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     count: 0,
-    items: []
+    items: [],
+    item: {}
   },
 
   mutations: {
@@ -18,7 +19,9 @@ export default new Vuex.Store({
       state.items = data
     },
     setItem (state, { data }) {
-      Vue.set(state.items, data.id, data)
+      // Vue.set(state.items, data.id, data)
+      console.log(data)
+      state.item = data
     }
   },
 
@@ -26,13 +29,13 @@ export default new Vuex.Store({
     fetchItems ({ commit }) {
       // возвращаем Promise через `store.dispatch()`
       // чтобы мы могли понять когда данные будут загружены
-      return HTTP.get('posts')
+      return HTTP.get('article?page=1&limit=30')
         .then(response => {
           commit('setItems', response)
         })
     },
-    fetchItem ({ commit }, id) {
-      return HTTP.get('posts/' + id)
+    fetchItem ({ commit }, code) {
+      return HTTP.get('article/code/' + code)
         .then(response => {
           commit('setItem', response)
         })

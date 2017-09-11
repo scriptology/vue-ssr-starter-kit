@@ -2,8 +2,8 @@
   .list
     .test posts
     .post(v-for='post of $store.state.items')
-      router-link(:to="{ name: 'post', params: { id: post.id } }") {{ post.title }}
-      p.post__body {{ post.body }}
+      router-link(:to="{ name: 'post', params: { code: post.code } }") {{ post.name }}
+      p.post__body {{ post.preview_text }}
 </template>
 
 <style lang="sass">
@@ -24,7 +24,6 @@ export default {
       items: [],
       title: '',
       description: '',
-      id: 0,
       config: null
     }
   },

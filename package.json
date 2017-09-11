@@ -14,7 +14,7 @@
     "build": "rimraf dist && webpack --config webpack.config.server.js && webpack -p --config webpack.config.client.js",
     "start": "node server.js"
   },
-  "author": "Jiang Fengming",
+  "author": "Andrey Solovev",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "6.7.7",
@@ -94,7 +94,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fenivana/vue-ssr-boilerplate.git"
+    "url": "git+https://gitlab.condenast.ru/asolovyev/vue-ssr-boilerplate"
   },
   "keywords": [
     "vue",
@@ -102,7 +102,7 @@
     "ssr"
   ],
   "bugs": {
-    "url": "https://github.com/fenivana/vue-ssr-boilerplate/issues"
+    "url": "https://gitlab.condenast.ru/asolovyev/vue-ssr-boilerplateissues"
   },
-  "homepage": "https://github.com/fenivana/vue-ssr-boilerplate#readme"
+  "homepage": "https://gitlab.condenast.ru/asolovyev/vue-ssr-boilerplate#readme"
 }

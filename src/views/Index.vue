@@ -32,12 +32,12 @@ export default {
 
   // will be called on server side. check your console
   created () {
-    console.log(this.a) //eslint-disable-line
+    //console.log(this.a) //eslint-disable-line
   },
 
   // won't run on server side
   beforeMount () {
-    console.log(this.a) //eslint-disable-line
+    //console.log(this.a) //eslint-disable-line
   }
 }
 </script>

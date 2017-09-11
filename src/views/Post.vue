@@ -1,9 +1,9 @@
 <template lang="pug">
-  .post
+  .post(v-if="item")
     .test post
-    div(v-if="item")
-      h1.post__title {{ item.title }}
-      div.post__body {{ item.body }}
+    div
+      h1.post__title {{ item.name }}
+      div.post__body {{ item.preview_text }}
 </template>
 
 <style lang="sass">
@@ -21,24 +21,24 @@ import config from '~/config'
 export default {
   data () {
     return {
-      title: '',
-      description: '',
-      id: 0,
+      name: '',
+      preview_text: '',
+      code: '',
       config: null
     }
   },
 
   asyncData ({ store, route }) {
     // возвращаем Promise из действия
-    if (route.params.id) {
-      return store.dispatch('fetchItem', route.params.id)
+    if (route.params.code) {
+      return store.dispatch('fetchItem', route.params.code)
     }
   },
 
   computed: {
     // отображаем элемент из состояния хранилища.
     item () {
-      return this.$store.state.items[this.$route.params.id]
+      return this.$store.state.item
     }
   },
 
@@ -58,11 +58,11 @@ export default {
           resolve({
             title: 'title async loaded',
             description: 'description async loaded',
-            id: route.params.id
+            code: route.params.code
           })
         })
       }),
-      store.dispatch('fetchItem', route.params.id),
+      store.dispatch('fetchItem', route.params.code),
       store.dispatch('asyncIncrement')
     ]).then(([componentData]) => componentData)
   },
@@ -74,6 +74,7 @@ export default {
     because the TARGET is different between server side (TARGET: node) and client side (TARGET: web)
     and this will cause the client-side rendered virtual DOM tree not matching server-rendered content
     */
+    this.item = {}
     this.config = JSON.stringify(config, null, 2)
   }
 }
