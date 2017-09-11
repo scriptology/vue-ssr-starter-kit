@@ -381,7 +381,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
     fetchItems: function fetchItems(_ref4) {
       var commit = _ref4.commit;
 
-      return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article?page=1&limit=30').then(function (response) {
+      return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article?page=1&limit=100').then(function (response) {
         commit('setItems', response);
       });
     },

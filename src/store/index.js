@@ -32,7 +32,7 @@ export default new Vuex.Store({
 
   actions: {
     fetchItems ({ commit }) {
-      return HTTP.get('article?page=1&limit=30')
+      return HTTP.get('article?page=1&limit=100')
         .then(response => {
           commit('setItems', response)
         })
