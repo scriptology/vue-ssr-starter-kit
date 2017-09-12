@@ -370,7 +370,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
     setItem: function setItem(state, _ref3) {
       var data = _ref3.data;
 
-      // Vue.set(state.items, data.id, data)
       state.item = data;
       state.title = data.name;
       state.description = data.description;
@@ -389,7 +388,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
       var commit = _ref5.commit;
 
       return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('tag?page=1&limit=10&is_root=1').then(function (response) {
-        commit('setTags', response);
+        __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article/code/novaya-kollekciya-trussardi-jeans').then(function (article) {
+          commit('setTags', response);
+          commit('setItem', article);
+        });
       });
     },
     fetchItem: function fetchItem(_ref6, code) {
@@ -781,7 +783,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   prefetch: function prefetch(route, store) {
-    return Promise.all([store.dispatch('fetchItems'), store.dispatch('fetchTags'), store.dispatch('fetchItem', 'chto-nosili-08-09-2017'), store.dispatch('asyncIncrement')]).then(function (_ref) {
+    return Promise.all([store.dispatch('fetchItems'), store.dispatch('fetchTags'),
+    //store.dispatch('fetchItem', 'raf-simons-inspiration'),
+    store.dispatch('asyncIncrement')]).then(function (_ref) {
       var componentData = _ref[0];
       return componentData;
     });
@@ -1134,7 +1138,15 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('h1', [_vm._v("vue-ssr-boilerplate")]), _c('hr'), _c('div', [_c('strong', {
     staticClass: "list__name"
-  }, [_vm._v("Article:")]), _c('h2', [_vm._v(_vm._s(_vm.$store.state.item.name))]), _c('p', [_vm._v(_vm._s(_vm.$store.state.item.preview_text))])]), _c('hr'), _c('div', {
+  }, [_vm._v("Article:")]), _c('h2', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.$store.state.item.name)
+    }
+  }), _c('p', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.$store.state.item.preview_text)
+    }
+  })]), _c('hr'), _c('div', {
     staticClass: "tags"
   }, [_c('strong', {
     staticClass: "tags__name"
@@ -1149,7 +1161,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("List:")]), _vm._l((_vm.$store.state.items), function(post) {
     return _c('div', {
       staticClass: "list__item"
-    }, [_c('h3', [_vm._v(_vm._s(post.name))]), _c('p', [_vm._v(_vm._s(post.preview_text))]), _c('img', {
+    }, [_c('h3', {
+      domProps: {
+        "innerHTML": _vm._s(post.name)
+      }
+    }), _c('p', [_vm._v(_vm._s(post.preview_text))]), _c('img', {
       attrs: {
         "src": post.image.preview_url
       }

@@ -4,8 +4,8 @@
     hr
     div
       strong.list__name Article:
-      h2 {{ $store.state.item.name }}
-      p {{ $store.state.item.preview_text }}
+      h2(v-html="$store.state.item.name")
+      p(v-html="$store.state.item.preview_text")
     hr
     .tags
       strong.tags__name Tags:
@@ -15,7 +15,7 @@
     .list
       strong.list__name List:
       .list__item(v-for='post of $store.state.items')
-        h3 {{ post.name }}
+        h3(v-html="post.name")
         p {{ post.preview_text }}
         img(:src="post.image.preview_url")
 </template>
@@ -89,7 +89,7 @@ export default {
     return Promise.all([
       store.dispatch('fetchItems'),
       store.dispatch('fetchTags'),
-      store.dispatch('fetchItem', 'chto-nosili-08-09-2017'),
+      //store.dispatch('fetchItem', 'raf-simons-inspiration'),
       store.dispatch('asyncIncrement')
     ]).then(([componentData]) => componentData)
   },

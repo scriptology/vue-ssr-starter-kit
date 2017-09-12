@@ -23,7 +23,6 @@ export default new Vuex.Store({
       state.tags = data
     },
     setItem (state, { data }) {
-      // Vue.set(state.items, data.id, data)
       state.item = data
       state.title = data.name
       state.description = data.description
@@ -40,7 +39,11 @@ export default new Vuex.Store({
     fetchTags ({ commit }) {
       return HTTP.get('tag?page=1&limit=10&is_root=1')
         .then(response => {
-          commit('setTags', response)
+          HTTP.get('article/code/novaya-kollekciya-trussardi-jeans')
+          .then(article => {
+            commit('setTags', response)
+            commit('setItem', article)
+          })
         })
     },
     fetchItem ({ commit }, code) {
