@@ -751,6 +751,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -1148,7 +1149,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("List:")]), _vm._l((_vm.$store.state.items), function(post) {
     return _c('div', {
       staticClass: "list__item"
-    }, [_c('h3', [_vm._v(_vm._s(post.name))]), _c('p', [_vm._v(_vm._s(post.preview_text))])])
+    }, [_c('h3', [_vm._v(_vm._s(post.name))]), _c('p', [_vm._v(_vm._s(post.preview_text))]), _c('img', {
+      attrs: {
+        "src": post.image.preview_url
+      }
+    })])
   })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true

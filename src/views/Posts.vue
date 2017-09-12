@@ -17,6 +17,7 @@
       .list__item(v-for='post of $store.state.items')
         h3 {{ post.name }}
         p {{ post.preview_text }}
+        img(:src="post.image.preview_url")
 </template>
 
 <style lang="sass">
