@@ -11,7 +11,8 @@ const routes = [
   { path: '/foo/:id', name: 'foo', component: _import('Foo') },
   { path: '/show-error-page', component: _import('ShowErrorPage') },
   { path: '/posts', component: _import('Posts') },
-  { path: '/posts/:code', name: 'post', component: _import('Post') }
+  { path: '/posts/:code', name: 'post', component: _import('Post') },
+  { path: '/posts_json', component: _import('PostsJson') }
 ]
 
 if (TARGET === 'web') {

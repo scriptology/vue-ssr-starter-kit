@@ -1,0 +1,132 @@
+[
+   {
+      "id":1,
+      "name":"\u0421\u0442\u0438\u043b\u044c",
+      "code":"style",
+      "is_root":true,
+      "rate":0,
+      "tags":[
+         {
+            "id":1671,
+            "name":"\u0421\u0442\u0440\u0438\u0442\u0441\u0442\u0430\u0439\u043b",
+            "code":"stritstajl",
+            "is_root":false,
+            "rate":0,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T14:17:39.000000Z"
+         },
+         {
+            "id":2997,
+            "name":"\u041f\u0440\u0430\u0432\u0438\u043b\u0430 \u0441\u0442\u0438\u043b\u044f",
+            "code":"pravila-stilya",
+            "is_root":false,
+            "rate":0,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T14:26:06.000000Z"
+         },
+         {
+            "id":5041,
+            "name":"\u043a\u0430\u043a \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0447\u0438\u0441\u0442\u0438\u0442\u044c \u043e\u0431\u0443\u0432\u044c",
+            "code":"kak-pravilno-chistit-obuv",
+            "is_root":false,
+            "rate":0,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T15:45:11.000000Z"
+         },
+         {
+            "id":5505,
+            "name":"100 \u0441\u0430\u043c\u044b\u0445 \u0441\u0442\u0438\u043b\u044c\u043d\u044b\u0445",
+            "code":"100-samyh-stilnyh",
+            "is_root":false,
+            "rate":0,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T16:39:06.000000Z"
+         }
+      ],
+      "created_at":"2017-02-14T14:15:30.000000Z"
+   },
+   {
+      "id":2,
+      "name":"\u0413\u0435\u0440\u043e\u0438",
+      "code":"person",
+      "is_root":true,
+      "rate":0,
+      "tags":[
+
+      ],
+      "created_at":"2017-02-14T14:15:30.000000Z"
+   },
+   {
+      "id":3,
+      "name":"\u0414\u0435\u0432\u0443\u0448\u043a\u0438",
+      "code":"girls",
+      "is_root":true,
+      "rate":0,
+      "tags":[
+         {
+            "id":52,
+            "name":"\u041c\u043e\u0434\u0435\u043b\u0438",
+            "code":"modeli",
+            "is_root":false,
+            "rate":70,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T14:15:31.000000Z"
+         },
+         {
+            "id":902,
+            "name":"Agent Provocateur",
+            "code":"agent-provocateur",
+            "is_root":false,
+            "rate":1,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T14:16:29.000000Z"
+         },
+         {
+            "id":2445,
+            "name":"\u041f\u043b\u044f\u0436",
+            "code":"plyazh",
+            "is_root":false,
+            "rate":72,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T14:20:16.000000Z"
+         },
+         {
+            "id":2566,
+            "name":"\u041a\u0443\u043f\u0430\u043b\u044c\u043d\u0438\u043a\u0438",
+            "code":"kupalniki",
+            "is_root":false,
+            "rate":0,
+            "tags":[
+
+            ],
+            "created_at":"2017-02-14T14:21:12.000000Z"
+         }
+      ],
+      "created_at":"2017-02-14T14:15:30.000000Z"
+   },
+   {
+      "id":4,
+      "name":"\u0423\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u044f",
+      "code":"lifestyle",
+      "is_root":true,
+      "rate":0,
+      "tags":[
+
+      ],
+      "created_at":"2017-02-14T14:15:30.000000Z"
+   }
+]

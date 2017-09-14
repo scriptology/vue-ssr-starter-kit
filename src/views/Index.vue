@@ -6,6 +6,7 @@
     <p><router-link to="/page-not-exist">goto /page-not-exist</router-link></p>
     <p><router-link to="/show-error-page">goto /show-error-page</router-link></p>
     <p><router-link to="/posts">posts</router-link></p>
+    <p><router-link to="/posts_json">posts (json)</router-link></p>
   </div>
 </template>
 
