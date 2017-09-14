@@ -8,7 +8,7 @@ const url = require('url')
 
 module.exports = (options = {}) => {
   const config = require('./config/' + (process.env.npm_config_config || options.config || 'default'))
-  
+
   return {
     entry: {
       vendor: './src/vendor',
@@ -45,6 +45,12 @@ module.exports = (options = {}) => {
           test: /\.js$/,
           exclude: /node_modules/,
           use: ['babel-loader', 'eslint-loader']
+        },
+
+        {
+          test: /\.json$/,
+          exclude: /node_modules/,
+          use: ['json-loader']
         },
 
         {

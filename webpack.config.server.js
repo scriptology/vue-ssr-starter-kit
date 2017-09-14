@@ -44,6 +44,12 @@ module.exports = (options = {}) => {
           use: 'babel-loader'
         },
 
+        {
+          test: /\.json$/,
+          exclude: /node_modules/,
+          use: ['json-loader']
+        },
+
         // {
         //   test: /\.s[a|c]ss$/,
         //   exclude: /node_modules/,

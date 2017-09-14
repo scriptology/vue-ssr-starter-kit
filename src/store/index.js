@@ -2,6 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { HTTP } from '../services/http-service'
 
+// test data
+import articlesJson from './json/articles.json'
+import tagsJson from './json/tags.json'
+import articleJson from './json/article.json'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -26,6 +31,15 @@ export default new Vuex.Store({
       state.item = data
       state.title = data.name
       state.description = data.description
+    },
+    setItemsFromJson (state, data) {
+      state.items = data
+    },
+    setTagsFromJson (state, data) {
+      state.tags = data
+    },
+    setArticleFromJson (state, data) {
+      state.item = data
     }
   },
 
@@ -33,17 +47,17 @@ export default new Vuex.Store({
     fetchItems ({ commit }) {
       return HTTP.get('article?page=1&limit=100')
         .then(response => {
-          commit('setItems', response)
+          HTTP.get('article/code/novaya-kollekciya-trussardi-jeans')
+          .then(article => {
+            commit('setItems', response)
+            commit('setItem', article)
+          })
         })
     },
     fetchTags ({ commit }) {
       return HTTP.get('tag?page=1&limit=10&is_root=1')
         .then(response => {
-          HTTP.get('article/code/novaya-kollekciya-trussardi-jeans')
-          .then(article => {
-            commit('setTags', response)
-            commit('setItem', article)
-          })
+          commit('setTags', response)
         })
     },
     fetchItem ({ commit }, code) {
@@ -58,6 +72,30 @@ export default new Vuex.Store({
           commit('increment')
           resolve()
         })
+      })
+    },
+    fetchItemsFromJson ({ commit }) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          commit('setItemsFromJson', articlesJson)
+          resolve()
+        }, 1000)
+      })
+    },
+    fetchTagsFromJson ({ commit }) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          commit('setTagsFromJson', tagsJson)
+          resolve()
+        }, 1000)
+      })
+    },
+    fetchArticleFromJson ({ commit }) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          commit('setArticleFromJson', articleJson)
+          resolve()
+        }, 1000)
       })
     }
   }
