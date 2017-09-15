@@ -95,7 +95,7 @@ fs.readFile(`${distDir}/server.js`, 'utf8', function(err, contents) {
       app.listen(config.ssrPort, () => {
         console.log(`server started at port ${config.ssrPort}`) // eslint-disable-line
       })
-    }, {count: os.cpus().length-1})
+    }, {count: os.cpus().length})
   })
 
 })
