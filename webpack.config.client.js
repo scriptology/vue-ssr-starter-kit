@@ -1,6 +1,7 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const pkgInfo = require('./package.json')
@@ -98,8 +99,13 @@ module.exports = (options = {}) => {
         template: 'src/index.html'
       }),
 
+      new HtmlWebpackIncludeAssetsPlugin({
+        assets: ['styles/all.min.css'],
+        append: true
+      }),
+
       new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'manifest']
+        names: ['vendor', 'manifest', 'assets']
       }),
 
       new webpack.DefinePlugin({
