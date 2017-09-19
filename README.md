@@ -74,7 +74,7 @@ The Second argument is Vuex store object. so you can set some Vuex state in `pre
 
 And we use [vue-meta](https://github.com/declandewet/vue-meta) to handle `<title>` and `<meta>`s.
 
-`src/views/Index.vue`:
+`src/components/Index.vue`:
 
 ```html
 <template>
@@ -121,7 +121,7 @@ export default {
 </script>
 ```
 
-`src/views/Foo.vue`:
+`src/components/Foo.vue`:
 
 ```html
 <template>
@@ -233,7 +233,7 @@ When `prefetch` return a rejected promise, the server will send a HTTP 500 statu
 
 In your component, you can handle it whatever you like.
 
-`src/views/ShowErrorPage.vue`:
+`src/components/ShowErrorPage.vue`:
 
 ```html
 <template>

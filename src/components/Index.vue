@@ -7,6 +7,7 @@
     <p><router-link to="/show-error-page">goto /show-error-page</router-link></p>
     <p><router-link to="/posts">posts</router-link></p>
     <p><router-link to="/posts_json">posts (json)</router-link></p>
+    <p><router-link to="/articles">articles</router-link></p>
   </div>
 </template>
 
