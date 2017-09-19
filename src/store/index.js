@@ -47,7 +47,7 @@ export default new Vuex.Store({
     fetchItems ({ commit }) {
       return HTTP.get('article?page=1&limit=100')
         .then(response => {
-          HTTP.get('article/code/novaya-kollekciya-trussardi-jeans')
+          return HTTP.get('article/code/novaya-kollekciya-trussardi-jeans')
           .then(article => {
             commit('setItems', response)
             commit('setItem', article)

@@ -3,18 +3,22 @@ import Router from 'vue-router'
 
 // can't put import() here, because node will complain "SyntaxError: Unexpected token import"
 const _import = require('./_import_' + TARGET)
-//import Articles from '../components/articles/articles.vue'
+import articleRouting from '../pages/articles/router'
 
 Vue.use(Router)
 
-const routes = [
+let routes = [
   { path: '/', component: _import('Index') },
   { path: '/foo/:id', name: 'foo', component: _import('Foo') },
   { path: '/show-error-page', component: _import('ShowErrorPage') },
   { path: '/posts', component: _import('Posts') },
   { path: '/posts/:code', name: 'post', component: _import('Post') },
   { path: '/posts_json', component: _import('PostsJson') }
-  // { path: '/articles', component: Articles }
+]
+
+routes = [
+  ...routes,
+  ...articleRouting
 ]
 
 if (TARGET === 'web') {

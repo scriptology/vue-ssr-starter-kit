@@ -313,13 +313,11 @@ function renderStyles (styles) {
 
 // can't put import() here, because node will complain "SyntaxError: Unexpected token import"
 var _import = __webpack_require__(17);
-//import Articles from '../components/articles/articles.vue'
+// import Articles from '../components/articles/articles.vue'
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router___default.a);
 
-var routes = [{ path: '/', component: _import('Index') }, { path: '/foo/:id', name: 'foo', component: _import('Foo') }, { path: '/show-error-page', component: _import('ShowErrorPage') }, { path: '/posts', component: _import('Posts') }, { path: '/posts/:code', name: 'post', component: _import('Post') }, { path: '/posts_json', component: _import('PostsJson')
-  // { path: '/articles', component: Articles }
-}];
+var routes = [{ path: '/', component: _import('Index') }, { path: '/foo/:id', name: 'foo', component: _import('Foo') }, { path: '/show-error-page', component: _import('ShowErrorPage') }, { path: '/posts', component: _import('Posts') }, { path: '/posts/:code', name: 'post', component: _import('Post') }, { path: '/posts_json', component: _import('PostsJson') }, { path: '/articles', component: _import('articles/articles') }];
 
 if (false) {
   routes.push(
@@ -404,7 +402,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
       var commit = _ref4.commit;
 
       return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article?page=1&limit=100').then(function (response) {
-        __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article/code/novaya-kollekciya-trussardi-jeans').then(function (article) {
+        return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article/code/novaya-kollekciya-trussardi-jeans').then(function (article) {
           commit('setItems', response);
           commit('setItem', article);
         });
