@@ -107,6 +107,9 @@
   "dependencies": {
     "express": "4.15.2",
     "express-cluster": "0.0.5",
+    "extract-loader": "^1.0.1",
+    "handlebars": "^4.0.10",
+    "handlebars-loader": "^1.6.0",
     "vue": "2.2.4",
     "vue-meta": "0.5.5",
     "vue-router": "2.3.0",

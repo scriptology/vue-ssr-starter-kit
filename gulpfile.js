@@ -31,11 +31,11 @@ var path = {
         vendorHTML: './src/vendor/**/*.html'
     },
     build: {
-        css: './dist/assets/styles/',
-        img: './dist/assets/images/',
-        fonts: './dist/assets/fonts/',
-        html: './dist/assets/html/',
-        js: './dist/assets/js/'
+        css: './dist/styles/',
+        img: './dist/images/',
+        fonts: './dist/fonts/',
+        html: './dist/html/',
+        js: './dist/js/'
     },
     watch: {
         style: './src/**/**/**/**/*.sass',

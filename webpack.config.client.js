@@ -101,11 +101,12 @@ module.exports = (options = {}) => {
 
       new HtmlWebpackIncludeAssetsPlugin({
         assets: ['styles/all.min.css'],
-        append: true
+        append: true,
+        hash: true
       }),
 
       new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'manifest', 'assets']
+        names: ['vendor', 'manifest']
       }),
 
       new webpack.DefinePlugin({
@@ -117,11 +118,6 @@ module.exports = (options = {}) => {
 
       new WriteFilePlugin(),
 
-      // new ExtractTextPlugin({
-      //   filename: '[name].css?[contenthash]',
-      //   allChunks: true,
-      //   disable: options.dev
-      // })
     ],
 
     resolve: {
