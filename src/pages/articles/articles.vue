@@ -4,10 +4,10 @@
     hr
     div
       strong.list__name Article:
-      h2(v-html="$store.state.item.name")
-      p(v-html="$store.state.item.preview_text")
-    hr
-    .tags
+      h2(v-html="$store.state.item.webTitle")
+      p(v-html="$store.state.item.sectionName")
+    //hr
+    //.tags
       strong.tags__name Tags:
       .tags__item(v-for='tag of $store.state.tags')
         span {{tag.name}}
@@ -15,9 +15,10 @@
     .list
       strong.list__name List:
       .list__item(v-for='post of $store.state.items')
-        h3(v-html="post.name")
-        p {{ post.preview_text }}
-        img(:src="post.image.preview_url")
+        h3(v-html="post.webTitle")
+        p {{ post.sectionName }}
+        p
+          i {{ post.webPublicationDate }}
 </template>
 
 <style lang="sass">
@@ -78,17 +79,16 @@ export default {
   computed: {
     // отображаем элемент из состояния хранилища.
     title () {
-      return this.$store.state.item.name
+      return this.$store.state.item.sectionName
     },
     description () {
-      return this.$store.state.item.description
+      return this.$store.state.item.sectionName
     }
   },
 
   prefetch (route, store) {
     return Promise.all([
       store.dispatch('fetchItems'),
-      store.dispatch('fetchTags'),
       //store.dispatch('fetchItem', 'raf-simons-inspiration'),
       store.dispatch('asyncIncrement')
     ]).then(([componentData]) => componentData)

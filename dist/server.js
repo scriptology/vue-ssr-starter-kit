@@ -309,6 +309,8 @@ function renderStyles (styles) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_router__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_articles_router__ = __webpack_require__(17);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 
 
 
@@ -318,9 +320,9 @@ var _import = __webpack_require__(19);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router___default.a);
 
-var routes = [{ path: '/', component: _import('Index') }, { path: '/foo/:id', name: 'foo', component: _import('Foo') }, { path: '/show-error-page', component: _import('ShowErrorPage') }, { path: '/posts', component: _import('Posts') }, { path: '/posts/:code', name: 'post', component: _import('Post') }, { path: '/posts_json', component: _import('PostsJson') }];
+var routes = [{ path: '/', component: _import('Index') }, { path: '/foo/:id', name: 'foo', component: _import('Foo') }, { path: '/show-error-page', component: _import('ShowErrorPage') }];
 
-routes = [].concat(routes, __WEBPACK_IMPORTED_MODULE_2__pages_articles_router__["a" /* default */]);
+routes = [].concat(_toConsumableArray(routes), _toConsumableArray(__WEBPACK_IMPORTED_MODULE_2__pages_articles_router__["a" /* default */]));
 
 if (false) {
   routes.push(
@@ -373,21 +375,21 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
       state.count++;
     },
     setItems: function setItems(state, _ref) {
-      var data = _ref.data;
+      var results = _ref.results;
 
-      state.items = data;
+      state.items = results;
     },
     setTags: function setTags(state, _ref2) {
-      var data = _ref2.data;
+      var results = _ref2.results;
 
-      state.tags = data;
+      state.tags = results;
     },
     setItem: function setItem(state, _ref3) {
-      var data = _ref3.data;
+      var results = _ref3.results;
 
-      state.item = data;
-      state.title = data.name;
-      state.description = data.description;
+      state.item = results[0];
+      state.title = results[0].webTitle;
+      state.description = results[0].sectionName;
     },
     setItemsFromJson: function setItemsFromJson(state, data) {
       state.items = data;
@@ -404,11 +406,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
     fetchItems: function fetchItems(_ref4) {
       var commit = _ref4.commit;
 
-      return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article?page=1&limit=100').then(function (response) {
-        return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('article/code/novaya-kollekciya-trussardi-jeans').then(function (article) {
-          commit('setItems', response);
-          commit('setItem', article);
-        });
+      var rightNow = new Date();
+      var date = rightNow.toISOString().slice(0, 10);
+      return __WEBPACK_IMPORTED_MODULE_2__services_http_service__["a" /* HTTP */].get('search?q=debate&tag=politics/politics&from-date=' + date + '&api-key=test').then(function (response) {
+        commit('setItems', response.data.response);
+        commit('setItem', response.data.response);
       });
     },
     fetchTags: function fetchTags(_ref5) {
@@ -558,6 +560,8 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 //
 //
 //
@@ -612,7 +616,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       });
     }), store.dispatch('fetchItem'), store.dispatch('asyncIncrement')]).then(function (_ref) {
-      var componentData = _ref[0];
+      var _ref2 = _slicedToArray(_ref, 1),
+          componentData = _ref2[0];
+
       return componentData;
     });
   },
@@ -637,8 +643,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -690,6 +694,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 //
 //
 //
@@ -753,7 +759,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       });
     }), store.dispatch('fetchItem', route.params.code), store.dispatch('asyncIncrement')]).then(function (_ref2) {
-      var componentData = _ref2[0];
+      var _ref3 = _slicedToArray(_ref2, 1),
+          componentData = _ref3[0];
+
       return componentData;
     });
   },
@@ -778,6 +786,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 //
 //
 //
@@ -867,7 +877,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return Promise.all([store.dispatch('fetchItems'), store.dispatch('fetchTags'),
     //store.dispatch('fetchItem', 'raf-simons-inspiration'),
     store.dispatch('asyncIncrement')]).then(function (_ref) {
-      var componentData = _ref[0];
+      var _ref2 = _slicedToArray(_ref, 1),
+          componentData = _ref2[0];
+
       return componentData;
     });
   },
@@ -891,6 +903,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 //
 //
 //
@@ -982,7 +996,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   prefetch: function prefetch(route, store) {
     return Promise.all([store.dispatch('fetchItemsFromJson'), store.dispatch('fetchTagsFromJson'), store.dispatch('fetchArticleFromJson'), store.dispatch('asyncIncrement')]).then(function (_ref) {
-      var componentData = _ref[0];
+      var _ref2 = _slicedToArray(_ref, 1),
+          componentData = _ref2[0];
+
       return componentData;
     });
   },
@@ -1035,6 +1051,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+//
 //
 //
 //
@@ -1113,18 +1132,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   computed: {
     // отображаем элемент из состояния хранилища.
     title: function title() {
-      return this.$store.state.item.name;
+      return this.$store.state.item.sectionName;
     },
     description: function description() {
-      return this.$store.state.item.description;
+      return this.$store.state.item.sectionName;
     }
   },
 
   prefetch: function prefetch(route, store) {
-    return Promise.all([store.dispatch('fetchItems'), store.dispatch('fetchTags'),
+    return Promise.all([store.dispatch('fetchItems'),
     //store.dispatch('fetchItem', 'raf-simons-inspiration'),
     store.dispatch('asyncIncrement')]).then(function (_ref) {
-      var componentData = _ref[0];
+      var _ref2 = _slicedToArray(_ref, 1),
+          componentData = _ref2[0];
+
       return componentData;
     });
   },
@@ -1189,7 +1210,7 @@ module.exports = function (file) {
 
 
 var HTTP = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-  baseURL: 'http://www.gq.ru/api/',
+  baseURL: 'https://content.guardianapis.com/',
   headers: {
     Authorization: 'Bearer {token}'
   }
@@ -1553,21 +1574,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "list__name"
   }, [_vm._v("Article:")]), _c('h2', {
     domProps: {
-      "innerHTML": _vm._s(_vm.$store.state.item.name)
+      "innerHTML": _vm._s(_vm.$store.state.item.webTitle)
     }
   }), _c('p', {
     domProps: {
-      "innerHTML": _vm._s(_vm.$store.state.item.preview_text)
+      "innerHTML": _vm._s(_vm.$store.state.item.sectionName)
     }
   })]), _c('hr'), _c('div', {
-    staticClass: "tags"
-  }, [_c('strong', {
-    staticClass: "tags__name"
-  }, [_vm._v("Tags:")]), _vm._l((_vm.$store.state.tags), function(tag) {
-    return _c('div', {
-      staticClass: "tags__item"
-    }, [_c('span', [_vm._v(_vm._s(tag.name))])])
-  })], 2), _c('hr'), _c('div', {
     staticClass: "list"
   }, [_c('strong', {
     staticClass: "list__name"
@@ -1576,13 +1589,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list__item"
     }, [_c('h3', {
       domProps: {
-        "innerHTML": _vm._s(post.name)
+        "innerHTML": _vm._s(post.webTitle)
       }
-    }), _c('p', [_vm._v(_vm._s(post.preview_text))]), _c('img', {
-      attrs: {
-        "src": post.image.preview_url
-      }
-    })])
+    }), _c('p', [_vm._v(_vm._s(post.sectionName))]), _c('p', [_c('i', [_vm._v(_vm._s(post.webPublicationDate))])])])
   })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -1708,14 +1717,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/show-error-page"
     }
   }, [_vm._v("goto /show-error-page")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/posts"
-    }
-  }, [_vm._v("posts")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/posts_json"
-    }
-  }, [_vm._v("posts (json)")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
     attrs: {
       "to": "/articles"
     }

@@ -1,5 +1,5 @@
 {
-  "name": "vue-ssr-boilerplate",
+  "name": "vue-ssr-starter-kit",
   "version": "0.1.0",
   "description": "Vue.js Server Side Rendering Boilerplate without Polluting Vuex",
   "main": "server.js",

@@ -8,3 +8,5 @@ config/*
 !config/default.js
 !config/dev.js
 /tmp
+dist
+/dist

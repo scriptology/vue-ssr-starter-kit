@@ -21,16 +21,16 @@ export default new Vuex.Store({
     increment (state) {
       state.count++
     },
-    setItems (state, { data }) {
-      state.items = data
+    setItems (state, { results }) {
+      state.items = results
     },
-    setTags (state, { data }) {
-      state.tags = data
+    setTags (state, { results }) {
+      state.tags = results
     },
-    setItem (state, { data }) {
-      state.item = data
-      state.title = data.name
-      state.description = data.description
+    setItem (state, { results }) {
+      state.item = results[0]
+      state.title = results[0].webTitle
+      state.description = results[0].sectionName
     },
     setItemsFromJson (state, data) {
       state.items = data
@@ -45,13 +45,12 @@ export default new Vuex.Store({
 
   actions: {
     fetchItems ({ commit }) {
-      return HTTP.get('article?page=1&limit=100')
+      const rightNow = new Date()
+      const date = rightNow.toISOString().slice(0, 10)
+      return HTTP.get(`search?q=debate&tag=politics/politics&from-date=${date}&api-key=test`)
         .then(response => {
-          return HTTP.get('article/code/novaya-kollekciya-trussardi-jeans')
-          .then(article => {
-            commit('setItems', response)
-            commit('setItem', article)
-          })
+          commit('setItems', response.data.response)
+          commit('setItem', response.data.response)
         })
     },
     fetchTags ({ commit }) {

@@ -10,10 +10,7 @@ Vue.use(Router)
 let routes = [
   { path: '/', component: _import('Index') },
   { path: '/foo/:id', name: 'foo', component: _import('Foo') },
-  { path: '/show-error-page', component: _import('ShowErrorPage') },
-  { path: '/posts', component: _import('Posts') },
-  { path: '/posts/:code', name: 'post', component: _import('Post') },
-  { path: '/posts_json', component: _import('PostsJson') }
+  { path: '/show-error-page', component: _import('ShowErrorPage') }
 ]
 
 routes = [
