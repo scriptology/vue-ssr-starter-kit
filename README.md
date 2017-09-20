@@ -26,7 +26,7 @@ First, download or clone this project.
 Then install npm packages via `npm install`.
 
 
-# Сборка css, images
+# Build css, images
 ```
 npm run gulp-build:prod
 npm run gulp-build:test
